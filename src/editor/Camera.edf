@@ -1,0 +1,5 @@
+// Common with player
+thingtype Camera
+{
+	cflags NOGRAVITY|NOCLIP
+}

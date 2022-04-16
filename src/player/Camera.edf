@@ -1,0 +1,4 @@
+thingtype Camera
+{
+	cflags NOGRAVITY|NOCLIP
+}

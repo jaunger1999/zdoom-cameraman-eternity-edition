@@ -1,0 +1,38 @@
+// Editor-specific
+actor PathMarker
+{
+    cflags NOGRAVITY|NOCLIP
+	
+    xscale 0.1
+	yscale 0.1
+    translucency 0.3
+
+    var int user_animation_delay;
+
+    States
+    @"
+      Spawn:
+        BFS1 A 1 bright
+        Loop
+      Animated:
+		TNT1 A 0 A_SetTranslucent(0.1);
+        TNT1 A 0 A_SetTics(user_animation_delay);
+        BFS1 A 1 bright
+          Goto AnimatedLoop
+        AnimatedLoop:
+            BFS1 A 1 bright A_SetTranslucent(0.1)
+            BFS1 A 1 bright A_SetTranslucent(0.2)
+            BFS1 A 1 bright A_SetTranslucent(0.3)
+            BFS1 A 1 bright A_SetTranslucent(0.4)
+            BFS1 A 1 bright A_SetTranslucent(0.5)
+            BFS1 A 1 bright A_SetTranslucent(0.6)
+            BFS1 A 1 bright A_SetTranslucent(0.8)
+            BFS1 A 1 bright A_SetTranslucent(1.0)
+            BFS1 A 1 bright A_SetTranslucent(0.8)
+            BFS1 A 1 bright A_SetTranslucent(0.6)
+            BFS1 A 1 bright A_SetTranslucent(0.4)
+            BFS1 A 1 bright A_SetTranslucent(0.2)
+            BFS1 A 10 bright A_SetTranslucent(0.1)
+            Loop
+    "@
+}

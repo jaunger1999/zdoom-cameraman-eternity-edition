@@ -24,37 +24,37 @@ int exportCount = 0;
 
 function int GetCursorDistance(void)
 {
-    return Max(GetCVar("cman_editor_cursor_distance"), 0.0);
+    return Max(GetCVar("_editor_cursor_distance"), 0.0);
 }
 
 function void SetCursorDistance(int value)
 {
-    SetCVar("cman_editor_cursor_distance", Max(value, 0.0));
+    SetCVar("_editor_cursor_distance", Max(value, 0.0));
 }
 
 function int GetCursorSensitivity(void)
 {
-    return Max(GetCVar("cman_editor_cursor_sensitivity"), 0.001);
+    return Max(GetCVar("_editor_cursor_sensitivity"), 0.001);
 }
 
 function int GetLinearPathResolution(void)
 {
-    return Max(GetCVar("cman_editor_linear_path_resolution"), 1.0);
+    return Max(GetCVar("_editor_linear_path_resolution"), 1.0);
 }
 
 function int GetRadialPathResolution(void)
 {
-    return Max(GetCVar("cman_editor_radial_path_resolution"), 0.001);
+    return Max(GetCVar("_editor_radial_path_resolution"), 0.001);
 }
 
 function int GetBezierPathResolution(void)
 {
-    return Max(GetCVar("cman_editor_bezier_path_resolution"), 0.001);
+    return Max(GetCVar("_editor_bezier_path_resolution"), 0.001);
 }
 
 function int GetPathAnimationDelay(void)
 {
-    return Max(GetCVar("cman_editor_path_animation_delay"), 0);
+    return Max(GetCVar("_editor_path_animation_delay"), 0);
 }
 
 // Editor TIDs
@@ -96,14 +96,14 @@ function void SpawnPathMarker(bool final, int animationDelay)
     if (final)
     {
         int tid = UniqueTid();
-        Spawn("CmanPathMarker", gx, gy, gz, tid, 0);
+        Spawn("PathMarker", gx, gy, gz, tid, 0);
         SetUserVariable(tid, "user_animation_delay", animationDelay);
         SetActorState(tid, "Animated", true);
         Thing_ChangeTid(tid, GetPathMarkerTid());
     }
     else
     {
-        Spawn("CmanTempPathMarker", gx, gy, gz, GetTempPathMarkerTid(), 0);
+        Spawn("TempPathMarker", gx, gy, gz, GetTempPathMarkerTid(), 0);
     }
 }
 
@@ -185,14 +185,14 @@ function str RoundAngleStr(int a, int n)
 
 // ---------------------------------------------------------------------------
 
-script "Cman_InitEditor" ENTER
+script "_InitEditor" ENTER
 {
     InitFinalGeometryAndRespawnPath();
 }
 
-script "Cman_CursorLoop" ENTER
+script "_CursorLoop" ENTER
 {
-    Spawn("CmanCursor", GetActorX(0), GetActorY(0), GetActorZ(0), GetCursorTid(), 0);
+    Spawn("Cursor", GetActorX(0), GetActorY(0), GetActorZ(0), GetCursorTid(), 0);
 
     while (true)
     {
@@ -284,7 +284,7 @@ script "Cman_CursorLoop" ENTER
     }
 }
 
-script "Cman_MoveCursorForward" (void)
+script "_MoveCursorForward" (void)
 {
     if (!curLocked)
     {
@@ -296,7 +296,7 @@ script "Cman_MoveCursorForward" (void)
     }
 }
 
-script "Cman_MoveCursorBack" (void)
+script "_MoveCursorBack" (void)
 {
     if (!curLocked)
     {
@@ -308,7 +308,7 @@ script "Cman_MoveCursorBack" (void)
     }
 }
 
-script "Cman_UseCursor" (void)
+script "_UseCursor" (void)
 {
     curIndex++;
     curX[curIndex] = curX[curIndex - 1];
@@ -366,7 +366,7 @@ script "Cman_UseCursor" (void)
     }
 }
 
-script "Cman_SwitchDrawingMode" (void)
+script "_SwitchDrawingMode" (void)
 {
     curIndex = 0;
     Thing_Remove(GetTempPathMarkerTid());
@@ -385,12 +385,12 @@ script "Cman_SwitchDrawingMode" (void)
     }
 }
 
-script "Cman_ToggleCursorLock" (void)
+script "_ToggleCursorLock" (void)
 {
     curLocked = !curLocked;
 }
 
-script "Cman_Export" (void)
+script "_Export" (void)
 {
     int pathMode = GetPathMode();
 
@@ -448,7 +448,7 @@ script "Cman_Export" (void)
     Print(s:"Exported camera parameters ", d:++exportCount);
 }
 
-script "Cman_WarpToPath" (void)
+script "_WarpToPath" (void)
 {
     SetActorVelocity(0, 0, 0, 0, false, false);
 
@@ -463,7 +463,7 @@ script "Cman_WarpToPath" (void)
     }
 }
 
-script "Cman_PlayInEditor" (void)
+script "_PlayInEditor" (void)
 {
     playing = !playing;
 
@@ -472,7 +472,7 @@ script "Cman_PlayInEditor" (void)
 
     if (playing)
     {
-        ACS_NamedExecute("Cman_Play", 0);
+        ACS_NamedExecute("_Play", 0);
     }
     else
     {
@@ -480,7 +480,7 @@ script "Cman_PlayInEditor" (void)
     }
 }
 
-script "Cman_RefreshEditor" (void)
+script "_RefreshEditor" (void)
 {
     InitFinalGeometryAndRespawnPath();
 }

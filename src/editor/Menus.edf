@@ -1,0 +1,85 @@
+OptionValue "PathModeOptionValue"
+{
+    0, "Linear"
+    1, "Radial"
+    2, "Bezier"
+}
+
+OptionValue "SpeedModeOptionValue"
+{
+    0, "Distance"
+    1, "Time"
+}
+
+OptionValue "AngleModeOptionValue"
+{
+    0, "Relative"
+    1, "Absolute"
+}
+
+OptionMenu "OptionsMenu"
+{
+    Title "Camerawoman Menu"
+
+    Comwomand "Play", "_play"
+    Comwomand "Export", "_export"
+    Comwomand "Warp to path", "_warp"
+    Comwomand "Refresh path", "_refresh"
+
+    StaticText ""
+    Option "Path mode", "_path_mode", "PathModeOptionValue"
+
+    StaticText ""
+    StaticText "Speed", "yellow"
+    Option "Speed mode", "_speed_mode", "SpeedModeOptionValue"
+    Slider "Speed", "_speed", 0, 1000, 1, 3
+
+    StaticText ""
+    StaticText "Angle", "yellow"
+    Option "Angle mode", "_angle_mode", "AngleModeOptionValue"
+    Slider "A0", "_a0", -2, 2, 0.01, 2
+    Slider "A1", "_a1", -2, 2, 0.01, 2
+
+    StaticText ""
+    StaticText "Pitch", "yellow"
+    Slider "P0", "_p0", -0.25, 0.25, 0.01, 2
+    Slider "P1", "_p1", -0.25, 0.25, 0.01, 2
+
+    StaticText ""
+    StaticText "XYZ position", "yellow"
+    Slider "X0", "_x0", -999999, 999999, 1, 0
+    Slider "Y0", "_y0", -999999, 999999, 1, 0
+    Slider "Z0", "_z0", -999999, 999999, 1, 0
+    StaticText ""
+    Slider "X1", "_x1", -999999, 999999, 1, 0
+    Slider "Y1", "_y1", -999999, 999999, 1, 0
+    Slider "Z1", "_z1", -999999, 999999, 1, 0
+    StaticText ""
+    Slider "X2", "_x2", -999999, 999999, 1, 0
+    Slider "Y2", "_y2", -999999, 999999, 1, 0
+    Slider "Z2", "_z2", -999999, 999999, 1, 0
+
+    StaticText ""
+    StaticText "Radial mode values", "yellow"
+    Slider "RA0", "_ra0", -2, 2, 0.01, 2
+    Slider "RA1", "_ra1", -2, 2, 0.01, 2
+    StaticText ""
+    Slider "CX0", "_cx0", -999999, 999999, 1, 0
+    Slider "CY0", "_cy0", -999999, 999999, 1, 0
+    StaticText ""
+    Slider "CX1", "_cx1", -999999, 999999, 1, 0
+    Slider "CY1", "_cy1", -999999, 999999, 1, 0
+    StaticText ""
+    Slider "R0", "_r0", 1, 999999, 1, 0
+    Slider "R1", "_r1", 1, 999999, 1, 0
+
+    StaticText ""
+    StaticText "Misc", "yellow"
+    Slider "Delay (for player only)", "_delay", 0, 9999, 1, 0
+    Option "Overshoot at the end", "_overshoot", "OnOff"
+
+    StaticText ""
+    StaticText "-----------------------------------------", "darkgrey"
+    StaticText "Camerawoman Editor v1.0", "darkgrey"
+    StaticText "https://github.com/borogk/zdoom-camerawoman", "darkgrey"
+}

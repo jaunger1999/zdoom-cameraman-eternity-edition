@@ -1,8 +1,10 @@
-# Cameraman mod for ZDoom
+# Camerawowoman mod for Eternity
 
-### What is Cameraman? 
+### What is Camerawowoman? 
 
-**Cameraman** is a mod for [ZDoom](https://zdoom.org/) family of source ports.
+Not really sure if it's possible to port the zdoom cameraman this to eternity, but I might as well try.
+
+**Camerawoman** is a mod for the [Eternity Engine](https://github.com/team-eternity/eternity).
 
 Use it to create camera profiles, play them back in-engine and capture as clips for your videos or movies! 
 
@@ -26,4 +28,5 @@ Possible use cases:
 
 ### Author
 
+Forked by jaunger in 2022.
 Created by **borogk** in 2021.

@@ -1,0 +1,14 @@
+// Editor-specific
+thingtype Cursor
+{
+    cflags NOGRAVITY|NOCLIP
+    xscale 0.16
+	yscale 0.16
+
+    states
+    @"
+      Spawn:
+        BFS1 A 1 Bright
+        loop
+    "@
+}
